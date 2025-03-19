@@ -5,19 +5,12 @@ const router = require('./routes/authRoutes');
 const cartrouter = require('./routes/cartRoutes');
 
 const app = express();
-const allowedOrigins =["frontend-41wmzed4x-prajwalhublis-projects.vercel.app","frontend-beta-eight-67.vercel.app"]
+// const allowedOrigins =["frontend-41wmzed4x-prajwalhublis-projects.vercel.app","frontend-beta-eight-67.vercel.app"]
 
 app.use(
     cors({
-        origin: function (origin, callback) {
-            if (!origin || allowedOrigins.includes(origin)) {
-                callback(null, true);
-            } else {
-                callback(new Error("Not allowed by CORS"));
-            }
-        },
-        credentials: true, // Allows cookies and authentication headers
-    })
+        origin: "https://backend1-fu4n.onrender.com" // Allows cookies and authentication headers
+        })
 );
  
 // middleware
