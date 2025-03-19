@@ -5,6 +5,20 @@ const router = require('./routes/authRoutes');
 const cartrouter = require('./routes/cartRoutes');
 
 const app = express();
+const allowedOrigins =["frontend-41wmzed4x-prajwalhublis-projects.vercel.app","frontend-beta-eight-67.vercel.app"]
+
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
+        credentials: true, // Allows cookies and authentication headers
+    })
+);
  
 // middleware
 app.use(cors())
@@ -18,9 +32,8 @@ app.get('/',(req,res)=>{
     res.send('hello, world!')
 })
 
-const port = 3000
+const port = 5000
 
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`)
 })
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDdmYTdjYjZjYTcxMDQxZWZjNzRkZiIsImlhdCI6MTc0MjIwNzY2Mn0.3Y8GYuf3eIJuWXre-FLACsimvOz4S0UfO2j_pVt0_pw

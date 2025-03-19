@@ -20,7 +20,7 @@ const Cart = require('../models/cart')
         res.json({cart,message:"item added to cart"})
  }
 
-exports.getCart = async(req,res)=>{
+ exports.getCart = async(req,res)=>{
     const cart =await Cart.findOne({userId:req.user.id})
     res.json(cart? cart.items:[])
 } 
